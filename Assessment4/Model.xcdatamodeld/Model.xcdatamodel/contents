@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="DogOwners" syncable="YES">
+    <entity name="DogOwners" representedClassName="DogOwners" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="belongsToOwner" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dogs" inverseName="ownsDog" inverseEntity="Dogs" syncable="YES"/>
     </entity>
