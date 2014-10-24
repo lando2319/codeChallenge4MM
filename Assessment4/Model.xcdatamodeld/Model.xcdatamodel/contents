@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DogOwners" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongsToOwner" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dogs" inverseName="ownsDog" inverseEntity="Dogs" syncable="YES"/>
+    </entity>
+    <entity name="Dogs" syncable="YES">
+        <attribute name="breed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ownsDog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DogOwners" inverseName="belongsToOwner" inverseEntity="DogOwners" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DogOwners" positionX="-308" positionY="26" width="128" height="73"/>
+        <element name="Dogs" positionX="-54" positionY="-9" width="128" height="103"/>
+    </elements>
 </model>
