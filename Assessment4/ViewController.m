@@ -14,6 +14,7 @@
 
 @property UIAlertView *addAlert;
 @property UIAlertView *colorAlert;
+@property NSArray *dogOwners;
 
 @end
 
@@ -22,6 +23,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+
+    NSURL *url = [NSURL URLWithString:@"http://s3.amazonaws.com/mobile-makers-assets/app/public/ckeditor_assets/attachments/25/owners.json"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+
+        self.dogOwners = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&connectionError];
+        [self.myTableView reloadData];
+    }];
     self.title = @"Dog Owners";
 }
 
@@ -29,14 +39,13 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //TODO: UPDATE THIS ACCORDINGLY
-    return 1;
+    return self.dogOwners.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"myCell"];
-    //TODO: UPDATE THIS ACCORDINGLY
+    cell.textLabel.text = [self.dogOwners objectAtIndex:indexPath.row];
     return cell;
 }
 
